@@ -1,107 +1,95 @@
-# Stock Price Prediction using LSTM and GRU
 
-This project demonstrates how to predict stock prices using Long Short-Term Memory (LSTM) and Gated Recurrent Unit (GRU) neural networks. The model is built using TensorFlow and Keras, and trained on historical stock market data. The project also includes features for visualizing stock price trends, scaling data, and forecasting future prices.
+# Stock Price Prediction with LSTM
 
-## Project Structure
+This repository focuses on predicting stock prices using historical data and machine learning models, specifically Long Short-Term Memory (LSTM) neural networks. It includes scripts for data preprocessing, model training, prediction, and visualization.
 
-- **Data Loading**: Load historical stock data from CSV files.
-- **Data Visualization**: Visualize the stock's open, high, low, close prices, and volume.
-- **Data Preprocessing**: Scale the stock data and prepare it for LSTM input.
-- **Model Building**: Build, train, and evaluate the LSTM model for stock price prediction.
-- **Validation**: Test the model on unseen stock data and evaluate the accuracy.
-- **Prediction**: Predict future stock prices for a given number of years ahead.
+## Project Overview
 
-## Technologies Used
+The project trains a machine learning model using historical stock data to predict future stock prices. It uses LSTM and TensorFlow to model time-series data for stock prices (Open, High, Low, Close, Volume). The project also supports scaling, splitting, and visualizing the data, and offers functionality to predict future stock prices based on the trained model.
 
-- **Libraries**:
-  - `numpy`: For numerical operations.
-  - `pandas`: For data manipulation.
-  - `matplotlib`: For data visualization.
-  - `scikit-learn`: For data scaling and error calculation.
-  - `tensorflow`: For building and training the LSTM neural networks.
+The historical stock data can be downloaded using the notebook sourced from [this Kaggle notebook](https://www.kaggle.com/code/jacksoncrow/download-nasdaq-historical-data), which fetches stock data from the NASDAQ.
 
-## Features
-
-- **GPU Compatibility**: The code automatically checks for available GPUs and configures TensorFlow to use them for faster training.
-- **Stock Prediction**: Train on stock data and predict future prices based on historical trends.
-- **Visualization**: Plot both the historical stock prices and the model's predictions for better insights.
-
-## How to Run
-
-1. **Install Dependencies**:  
-   You need Python 3.x and the required libraries. Install the dependencies by running:
-
-   ```bash
-   pip install numpy pandas matplotlib scikit-learn tensorflow
-   ```
-
-2. **Prepare Stock Data**:  
-   Ensure your stock data is available as CSV files in the `stocks/` directory with columns: `Date, Open, High, Low, Close, Volume`.
-
-3. **Run the Script**:  
-   You can run the script by executing:
-
-   ```bash
-   python stock_prediction.py
-   ```
-
-4. **Input Parameters**:
-   - Stock symbol (file name without `.csv`).
-   - Start and end year for training.
-   - Number of time steps (sequence length) for prediction.
-   - Optionally, predict future prices after model training.
-
-## Key Functions
-
-- `load_stock_file(stock)`: Loads the CSV file for the specified stock symbol.
-- `train_test_plot(dataset, tstart, tend)`: Visualizes the training and test stock data.
-- `train_test_split(dataset, tstart, tend)`: Splits the dataset into training and test sets.
-- `scale_dataset(training_dataset)`: Scales the dataset using MinMaxScaler.
-- `build_LSTM(n_steps, features)`: Builds and compiles the LSTM model.
-- `validation()`: Evaluates the model and plots test predictions.
-- `predict_future()`: Predicts stock prices for a specified number of years ahead.
-
-## Example Usage
-
-```python
-# Example stock symbol and parameters
-Enter the Stock you want to train for: AAPL
-from which year to start: 2015
-till which year to end: 2020
-How many steps to consider for predicting: 60
-```
-
-After running, the script will:
-- Load and visualize historical stock data.
-- Train the LSTM model on the data.
-- Test the model on unseen data and plot the predictions.
-- Optionally, predict stock prices for future years.
-
-## Model Architecture
-
-The LSTM model is built with the following layers:
-- LSTM layers with 125 and 64 units.
-- Dense output layer for predicting `Open`, `High`, `Low`, `Close`, and `Volume`.
-
-The model is trained using the Adam optimizer and mean squared error (MSE) loss function.
+### Features
+- Stock price prediction using LSTM.
+- Training and testing with custom date ranges.
+- Data visualization for both training and predicted data.
+- Predict future stock prices for the desired number of years ahead.
+- GPU support for faster training and prediction.
+- Utility for downloading historical stock data from NASDAQ.
 
 ## Requirements
 
-- Python 3.x
-- TensorFlow >= 2.x
-- pandas
-- numpy
-- scikit-learn
-- matplotlib
+To run this project, ensure that the following dependencies are installed:
 
-## Results
+- Python 3.8+
+- TensorFlow 2.x
+- NumPy
+- Pandas
+- Matplotlib
+- Scikit-learn
+- yfinance (for downloading historical data)
 
-The project plots both the real and predicted stock prices. Additionally, it provides root mean squared error (RMSE) for each stock price component (`Open`, `High`, `Low`, `Close`, and `Volume`), allowing you to assess model accuracy.
+Install the necessary libraries via:
+
+```bash
+pip install -r requirements.txt
+```
+
+### Required Libraries
+
+```bash
+tensorflow
+numpy
+pandas
+matplotlib
+scikit-learn
+yfinance
+```
+
+## How to Use
+
+1. **Download Stock Data:**
+   You can download NASDAQ stock data by running the `download_nasdaq_historical_data.ipynb` notebook. This script will fetch historical data for all NASDAQ-traded symbols and separate stocks from ETFs.
+
+2. **Run the Prediction Script:**
+   You can run the main script (`main.py`) to train the LSTM model, test it, and predict stock prices for future dates. Ensure the stock data is stored in the appropriate directory before running the script.
+
+   ```bash
+   python main.py
+   ```
+
+3. **Training the Model:**
+   The model uses historical data from `.csv` files to train the LSTM model. The script prompts you for the stock symbol, training period, and the number of steps (lag days) to predict stock prices.
+
+4. **Predicting Future Prices:**
+   After training, you can choose to predict future stock prices for a specified number of years.
+
+## Configurations
+
+- **Stock Symbol**: Specify which stock symbol to use (e.g., 'AAPL').
+- **Training Period**: Define the start and end year for training the model.
+- **Future Prediction**: Option to predict stock prices for a certain number of years ahead after model training.
+
+## Folder Structure
+
+- `stocks/`: Contains the stock data used for training and prediction.
+- `etfs/`: Contains data for exchange-traded funds (ETFs), which can be excluded from stock prediction tasks.
+- `scripts/`: Contains all Python scripts for training, prediction, and visualization.
+- `notebooks/`: Contains Jupyter notebooks for downloading and preprocessing data.
+
+## Example Usage
+
+```bash
+# Run the main script and follow the prompts
+python main.py
+```
 
 ## License
 
-This project is open-source and available under the [MIT License](LICENSE).
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
 
-```
 
-This `README.md` provides an overview of your project, including setup instructions, a summary of the functionality, and example usage. Let me know if you'd like any specific details added!
+---
+
+Feel free to adjust the content according to your project specifics.
