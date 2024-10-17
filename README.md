@@ -13,5 +13,5 @@ This project aims to predict stock prices using LSTM (Long Short-Term Memory) mo
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/your-repo-name.git
+   git clone https://github.com/DkPanseriya/-4.Learn--Predict-Stock-Price-with-LSTM.git
    cd your-repo-name
