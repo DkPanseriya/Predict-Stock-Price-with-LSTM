@@ -1,29 +1,3 @@
-# Stock Price Prediction with LSTM
-
-This project aims to predict stock prices using LSTM (Long Short-Term Memory) models. We use historical stock prices to train the model and predict future prices.
-
-## Features
-
-- Load historical stock prices from CSV files.
-- Train LSTM models on the stock prices.
-- Visualize the training and validation results.
-- Predict future stock prices based on the trained model.
-
-## Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/DkPanseriya/Predict-Stock-Price-with-LSTM.git
-   cd Predict-Stock-Price-with-LSTM
-   
-2. Install the required packages:
-   ```bash
-   pip install -r requirements.txt
-
-
-Here is a sample `README.md` file for your stock price prediction project using LSTM and GRU models:
-
-```md
 # Stock Price Prediction using LSTM and GRU
 
 This project demonstrates how to predict stock prices using Long Short-Term Memory (LSTM) and Gated Recurrent Unit (GRU) neural networks. The model is built using TensorFlow and Keras, and trained on historical stock market data. The project also includes features for visualizing stock price trends, scaling data, and forecasting future prices.
